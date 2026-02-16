@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <?php $servername = "localhost"; $username = "root"; $password = ""; $dbname
+    = "restaurant"; // Create connection $conn = new mysqli($servername,
+    $username, $password, $dbname); // Check connection if
+    ($conn->connect_error) { die("Connection failed: " . $conn->connect_error);
+    } $sql = "SELECT id, name, price, imagepath FROM Products"; // Execute the
+    SQL query $result = $conn->query($sql); ?>
+
+    <h1>POTATO CORNER MENU LIST</h1>
+    <main>
+      <div class="container"></div>
+    </main>
+  </body>
+</html>
