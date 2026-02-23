@@ -1,53 +1,131 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "restaurant";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, name, price, imagepath  FROM Products";
+// Execute the SQL query
+$result = $conn->query($sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>APP DEV</title>
+    <title>Document</title>
 
-    <Style>
+    <style>
+        * {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #0f0f0f;
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* gap: 40px; */
+            flex-direction: column;
+            /* background: #f0f0f0; */
+        }
+
+        main {
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            width: 30vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: #f7f7f7;
+            flex-wrap: wrap;
+            padding-bottom: 40px;
+            padding-top: 40px;
+            border-radius: 48px;
+            box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
+            justify-content:center;
+            
+            /* background: yellow; */
+            height: 400px;
+            width: 300px;
         }
 
-        a {
-            text-decoration: none;
+        .texts {
+            /* background: blue; */
+            height: 20%;
+            width: 230px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+
+        img {
+            height: 80%;
+            width: 100%;
+            object-fit: cover;
+            transform: scale(110%);
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0, 0.3));
         }
 
         h1 {
-            color: skyblue;
-            font-size: 2rem;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: bold;
-            text-align: center;
-            font-size: 80px;
-            text-transform: uppercase;
-            text-shadow: 0 0 100px rgba(111, 255, 255, 1);
+            color: green;
+            font-weight: 900;
         }
 
-        /* h1:hover {
-            color: red;
-            cursor: pointer;
-        } */
-    </Style>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    </style>
 </head>
-
 <body>
-    <h1>Hello World!</h1>
-    <p>this a paragraph</p>
-</body>
+    <main>
+        <div style="align-items: center; width: 100%; height: 8%; text-align: center;">
 
+            <h1>POTATO CORNER</h1>
+            <h1>MENU LIST</h1>
+        </div>
+        
+    <?php
+
+        $i = 1;
+        // Process the result set
+        if ($result->num_rows > 0) {
+        // Output data of each row
+        while($row = $result->fetch_assoc()) {
+            $image = $row["imagepath"];
+            // $image = "assets\Crunchy-Chicken-Pops-Mega-Mix.webp";
+            echo "<div class=\"container\">";
+            echo "<img src=\"$image\"><br>";
+            echo "<div class=\"texts\">" . "<h3>" . $row["name"] . "</h3>". "PRICE: " . $row["price"] . "</div></div>";
+        }
+        } else {
+        echo "0 results";
+        }
+
+        $conn->close();
+    ?>
+    
+    </main>
+</body>
 </html>
