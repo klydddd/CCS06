@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
       <form action="" method="post" style="width:50vw; min-width:300px;">
         <div class="mb-3">
           <label class="form-label">Name:</label>
-          <input type="text" class="form-control" name="name" value="<?php echo $row['Name'] ?>" required>
+          <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>" required>
         </div>
 
         <div>

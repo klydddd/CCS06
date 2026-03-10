@@ -136,6 +136,7 @@ if (isset($_POST["submit"])) {
           newEntry.querySelector('.remove-product-btn').disabled = false;
           container.appendChild(newEntry);
           updateRemoveButtons();
+          updateProductOptions();
       });
 
       container.addEventListener('click', function(e) {
@@ -144,6 +145,7 @@ if (isset($_POST["submit"])) {
               if (container.children.length > 1) {
                   entry.remove();
                   updateRemoveButtons();
+                  updateProductOptions();
               }
           }
       });
@@ -155,6 +157,35 @@ if (isset($_POST["submit"])) {
               btn.disabled = entries.length === 1;
           });
       }
+
+      function updateProductOptions() {
+          const selects = Array.from(container.querySelectorAll('select[name="product_id[]"]'));
+          const selectedValues = selects.map(select => select.value).filter(val => val !== '');
+          
+          selects.forEach(select => {
+              const options = Array.from(select.options);
+              options.forEach(option => {
+                  if (option.value === '') return;
+                  
+                  if (selectedValues.includes(option.value) && select.value !== option.value) {
+                      option.style.display = 'none';
+                      option.disabled = true;
+                  } else {
+                      option.style.display = '';
+                      option.disabled = false;
+                  }
+              });
+          });
+      }
+
+      container.addEventListener('change', function(e) {
+          if (e.target.tagName === 'SELECT') {
+              updateProductOptions();
+          }
+      });
+
+      // Initialize on load for existing entries
+      updateProductOptions();
   });
   </script>
 </body>

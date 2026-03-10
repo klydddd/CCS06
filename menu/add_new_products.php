@@ -73,7 +73,8 @@ if (isset($_POST["submit"])) {
                     <input type="text" class="form-control" name="name" placeholder="Product Name" required>
                     <br>
                     <label class="form-label">Price:</label>
-                    <input type="number" step="0.01" class="form-control" name="price" placeholder="Price" min="0.01" required>
+                    <input type="number" step="0.01" class="form-control" name="price" placeholder="Price" min="0.01"
+                        required>
                     <br>
                     <label class="form-label">Upload image:</label>
                     <input type="file" class="form-control" name="imagePath" required>
