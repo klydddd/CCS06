@@ -1,11 +1,12 @@
 <?php
 include "db_conn.php";
 $id = $_GET["id"];
-$sql = "UPDATE `menus` SET `DateDeleted` = NOW() WHERE ID = $id";
+$sql = "UPDATE `menus` SET `dateDeleted` = NOW() WHERE ID = $id";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
   header("Location: index.php?msg=Data deleted successfully");
-} else {
+}
+else {
   echo "Failed: " . mysqli_error($conn);
 }
