@@ -1,0 +1,21 @@
+* { box-sizing: border-box; }
+h1, h2, h3 { text-align: center; margin-top: 30px; }
+h2 { color:#1c47a9; }
+.err-msg { text-align: center; color:red; }
+.form-1 {
+    margin: 50px auto;
+    padding-bottom: 30px;
+    border: 1px solid #09168d;
+    border-radius: 7px;
+    background: #fff;
+    width: 37%;
+}
+p { text-align: center; }
+.check {
+    margin: 5px 0px;
+    width: 6%;
+    height: 20px;
+}
+@media screen and (max-width: 700px) {
+    .form-1 { width: 80%; }
+}
