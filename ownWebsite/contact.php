@@ -100,10 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="contact-body">
 
-    <div class="wall-texture"></div>
     <div class="landing-orb orb-1"></div>
     <div class="landing-orb orb-2"></div>
     <div class="landing-orb orb-3"></div>
+    <div class="wall-texture"></div>
     <div class="noise-overlay"></div>
 
     <nav class="landing-nav">
