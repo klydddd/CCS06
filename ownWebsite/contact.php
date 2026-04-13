@@ -20,7 +20,7 @@ $nav_showcase_label = 'Showcase';
 $nav_contact_no = '02';
 $nav_contact_label = 'Contact';
 $footer_status = 'Available for new projects';
-$footer_year = '&copy; 2026';
+$footer_year = '&copy; 2026'; // Raw HTML entity — echoed unescaped in view; keep as string literal only
 
 // ── CSRF token ────────────────────────────────────────────────
 if (empty($_SESSION['csrf_token'])) {
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php else: ?>
         <!-- ── Contact form ── -->
-        <div class="contact-card form-card">
+        <div class="contact-card">
             <div class="form-header">
                 <h1 class="form-heading">   <?= htmlspecialchars($form_heading,    ENT_QUOTES, 'UTF-8') ?></h1>
                 <p  class="form-subheading"><?= htmlspecialchars($form_subheading, ENT_QUOTES, 'UTF-8') ?></p>
